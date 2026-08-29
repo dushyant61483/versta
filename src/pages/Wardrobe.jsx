@@ -25,6 +25,12 @@ export default function Wardrobe() {
   }, [items, activeCategory, query])
 
   function handleFile(file) {
+    if (!file) return
+
+    if (pendingPreview?.startsWith('blob:')) {
+      URL.revokeObjectURL(pendingPreview)
+    }
+
     const url = URL.createObjectURL(file)
     setPendingPreview(url)
     if (!pendingName) setPendingName(file.name.replace(/\.[^.]+$/, ''))
@@ -43,6 +49,9 @@ export default function Wardrobe() {
     // wardrobe record instead of only keeping it in local component state.
     setItems((prev) => [newItem, ...prev])
     setShowUpload(false)
+    if (pendingPreview?.startsWith('blob:')) {
+      URL.revokeObjectURL(pendingPreview)
+    }
     setPendingPreview(null)
     setPendingName('')
   }

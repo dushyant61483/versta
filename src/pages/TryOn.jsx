@@ -15,6 +15,12 @@ export default function TryOn({ selectedOutfit, onSelectOutfit }) {
   const [error, setError] = useState(null)
 
   function handlePhoto(file) {
+    if (!file) return
+
+    if (photo?.startsWith('blob:')) {
+      URL.revokeObjectURL(photo)
+    }
+
     const url = URL.createObjectURL(file)
     setPhoto(url)
     setStatus('idle')
@@ -42,6 +48,9 @@ export default function TryOn({ selectedOutfit, onSelectOutfit }) {
   }
 
   function reset() {
+    if (photo?.startsWith('blob:')) {
+      URL.revokeObjectURL(photo)
+    }
     setPhoto(null)
     setResult(null)
     setStatus('idle')
