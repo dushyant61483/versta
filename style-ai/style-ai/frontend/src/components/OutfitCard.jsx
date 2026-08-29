@@ -1,47 +1,145 @@
+import React from "react";
+
 function OutfitCard({
-  title,
-  description,
-  items,
-  score,
-  tag,
+  outfit = {},
+  onTryOn,
+  onSelect,
 }) {
   return (
     <article className="outfit-card">
-      <div className="outfit-image">
-        <span className="outfit-placeholder">✦</span>
 
-        <span className="outfit-tag">
-          {tag}
-        </span>
+      {/* Outfit Image */}
+      <div className="outfit-image-wrapper">
+        {outfit.image ? (
+          <img
+            src={outfit.image}
+            alt={outfit.name || "Recommended outfit"}
+            className="outfit-image"
+          />
+        ) : (
+          <div className="outfit-image-placeholder">
+            <span>👕</span>
+            <p>Outfit Preview</p>
+          </div>
+        )}
 
-        <button
-          className="favorite-button"
-          aria-label={`Save ${title}`}
-        >
-          ♡
-        </button>
+        {outfit.badge && (
+          <span className="outfit-badge">
+            {outfit.badge}
+          </span>
+        )}
       </div>
 
-      <div className="outfit-content">
-        <div className="outfit-title-row">
-          <h3>{title}</h3>
+      {/* Outfit Details */}
+      <div className="outfit-card-content">
 
-          <span className="outfit-score">
-            {score}
-          </span>
+        <div className="outfit-title-row">
+          <div>
+            <p className="outfit-label">
+              AI RECOMMENDATION
+            </p>
+
+           <h3>
+              {outfit.name || "Recommended Outfit"}
+            </h3>
+
+            {outfit.description && (
+              <p className="outfit-description">
+                {outfit.description}
+              </p>
+            )}
+          </div>
+
+          {outfit.styleScore !== undefined && (
+            <div className="style-score">
+              <strong>{outfit.styleScore}</strong>
+              <span>/100</span>
+            </div>
+          )}
         </div>
 
-        <p className="outfit-description">
-          {description}
-        </p>
+        {/* Clothing Items */}
+        {outfit.items?.length > 0 && (
+          <div className="outfit-items">
+            {outfit.items.map((item, index) => (
+              <span
+                className="outfit-item"
+                key={index}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
 
-        <p className="outfit-items">
-          {items}
-        </p>
+        {/* Scores */}
+        <div className="outfit-scores">
 
-        <button className="try-button">
-          Try this look →
-        </button>
+          {outfit.weatherScore !== undefined && (
+            <div className="score-row">
+              <span>Weather</span>
+              <strong>
+                {outfit.weatherScore}%
+              </strong>
+            </div>
+          )}
+
+          {outfit.occasionScore !== undefined && (
+            <div className="score-row">
+              <span>Occasion</span>
+              <strong>
+                {outfit.occasionScore}%
+              </strong>
+            </div>
+          )}
+
+          {outfit.styleCompatibility !== undefined && (
+            <div className="score-row">
+              <span>Style Match</span>
+              <strong>
+                {outfit.styleCompatibility}%
+              </strong>
+            </div>
+          )}
+
+        </div>
+
+        {/* AI Reason */}
+        {outfit.reason && (
+          <div className="outfit-reason">
+            <span className="reason-icon">
+              ✦
+            </span>
+
+            <p>{outfit.reason}</p>
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="outfit-actions">
+
+          {onTryOn && (
+            <button
+              type="button"
+              className="try-on-button"
+              onClick={() => onTryOn(outfit)}
+            >
+              Try This On
+            </button>
+          )}
+
+          {onSelect && (
+            <button
+              type="button"
+              className="select-outfit-button"
+              onClick={() => onSelect(outfit)}
+            >
+              Select Outfit
+            </button>
+          )}
+
+        </div>
+
       </div>
     </article>
   );

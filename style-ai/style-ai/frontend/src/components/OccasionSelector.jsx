@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-function OccasionSelector() {
-  const [selected, setSelected] = useState("College");
-
+function OccasionSelector({ selectedOccasion, onChange }) {
   const occasions = [
     { name: "College", icon: "🎓" },
     { name: "Casual", icon: "☕" },
@@ -16,9 +12,9 @@ function OccasionSelector() {
         <button
           key={occasion.name}
           className={`occasion-button ${
-            selected === occasion.name ? "selected" : ""
+            selectedOccasion === occasion.name ? "selected" : ""
           }`}
-          onClick={() => setSelected(occasion.name)}
+          onClick={() => onChange(occasion.name)}
         >
           <span>{occasion.icon}</span>
           {occasion.name}
