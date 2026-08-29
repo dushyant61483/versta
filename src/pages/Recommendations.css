@@ -1,0 +1,67 @@
+.rec-context {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.rec-occasion {
+  padding: 26px;
+}
+
+.rec-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.rec-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rec-toolbar-pills {
+  display: flex;
+  gap: 8px;
+}
+
+.rec-pill {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  color: var(--ivory-dim);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.rec-pill.is-active {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+}
+
+.rec-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ivory-dim);
+}
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 820px) {
+  .rec-context {
+    grid-template-columns: 1fr;
+  }
+}

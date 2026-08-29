@@ -1,0 +1,265 @@
+/* ============================================================
+   STYLE AI — DESIGN TOKENS
+   Palette: ink black studio, ivory type, thread-gold accent,
+   stitch-red used once as the signature mark.
+   Signature motif: a "running stitch" — a dashed thread line
+   that appears on dividers, card seams, and the tape-measure
+   score bars. It's the one tailoring reference we lean on.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --ink: #14130f;
+  --ink-2: #1d1b16;
+  --ink-3: #262319;
+  --ink-4: #302c20;
+  --ivory: #f3eee1;
+  --ivory-dim: #cfc7b3;
+  --parchment-dim: #a69d8a;
+  --gold: #c9a227;
+  --gold-soft: #e0c766;
+  --brick: #a4402f;
+  --brick-soft: #c46a58;
+  --line: rgba(243, 238, 225, 0.12);
+  --line-strong: rgba(243, 238, 225, 0.22);
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+
+  /* Layout */
+  --page-max: 1180px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --nav-h: 72px;
+
+  /* Shadow */
+  --shadow-card: 0 20px 50px -25px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--ivory-dim);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Layout shell */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  padding-top: var(--nav-h);
+  flex: 1;
+}
+
+.container {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Signature running-stitch divider */
+.stitch-divider {
+  border: none;
+  border-top: 1px dashed var(--line-strong);
+  margin: 48px 0;
+}
+
+.stitch-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.stitch-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.btn-primary:hover {
+  background: var(--gold-soft);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ivory);
+  border-color: var(--line-strong);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--parchment-dim);
+  padding: 13px 16px;
+}
+
+.btn-ghost:hover {
+  color: var(--ivory);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+
+/* Card base */
+.card {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: -1px;
+  width: 1px;
+  height: 22px;
+  background: var(--line-strong);
+}
+
+/* Image fallback swatch — used when a referenced image is missing */
+.img-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--ink-3),
+    var(--ink-3) 10px,
+    var(--ink-4) 10px,
+    var(--ink-4) 20px
+  );
+  color: var(--parchment-dim);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  padding: 12px;
+  border-radius: inherit;
+  min-height: 100%;
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 0 18px;
+  }
+}

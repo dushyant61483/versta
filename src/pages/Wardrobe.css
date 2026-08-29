@@ -1,0 +1,77 @@
+.wardrobe-upload {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.wardrobe-upload-media .upload-box {
+  min-height: 200px;
+}
+
+.wardrobe-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.wardrobe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--parchment-dim);
+}
+
+.wardrobe-field input,
+.wardrobe-field select {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+
+.wardrobe-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.wardrobe-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wardrobe-search {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  min-width: 220px;
+}
+
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 700px) {
+  .wardrobe-upload {
+    grid-template-columns: 1fr;
+  }
+}

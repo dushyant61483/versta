@@ -1,0 +1,117 @@
+.tryon-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 28px;
+  padding-bottom: 90px;
+}
+
+.tryon-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tryon-clear {
+  align-self: flex-start;
+  padding-left: 0;
+}
+
+.tryon-outfit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.tryon-outfit-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  text-align: left;
+  color: var(--ivory-dim);
+  transition: border-color 0.2s ease;
+}
+
+.tryon-outfit-pill:hover {
+  border-color: var(--line-strong);
+}
+
+.tryon-outfit-pill.is-active {
+  border-color: var(--gold);
+  color: var(--ivory);
+}
+
+.tryon-outfit-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tryon-result-frame {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-2);
+  overflow: hidden;
+}
+
+.tryon-result-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--parchment-dim);
+  text-align: center;
+  padding: 24px;
+}
+
+.tryon-result-done {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tryon-result-done img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 460px;
+}
+
+.tryon-mock-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(20, 19, 15, 0.85);
+  color: var(--gold-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.tryon-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 980px) {
+  .tryon-layout {
+    grid-template-columns: 1fr;
+  }
+}
